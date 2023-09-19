@@ -1,0 +1,101 @@
+@charset "utf-8";
+/*
+   New Perspectives on HTML5 and CSS3, 7th Edition
+   Tutorial 5
+   Tutorial Case
+   
+   Author:   Ignacio Lopez
+   Date:     9/18/2023
+   
+   Filename: tf_print.css
+
+   This file contains the printer styles used with the Trusted
+   Friends page on articles of interest
+
+*/
+
+/******* Hidden Objects *******/
+/******* ^^^^^^^^^^^^^^ *******/
+nav.horizontal, aside, footer {
+   display: none;
+}
+
+
+/******* Page Box Styles *******/
+/******* ^^^^^^^^^^^^^^^ *******/
+@page {
+   size: 8.5in 11in;
+   margin: 0.5;
+}
+
+
+/******* Header Styles *******/
+/******* ^^^^^^^^^^^^^ *******/
+body > header {
+   text-align: right;
+}
+body > header > img {
+   display: block;
+   width: 100%;
+}
+
+
+/******* Typography Styles *******/
+/******* ^^^^^^^^^^^^^^^^^ *******/
+h1 {
+   font-size: 28pt;
+   line-height: 30pt;
+   margin: 0.3in 0in 0.2in;
+}
+h2 {
+   font-size: 20pt;
+   margin: 0.1in 0in 0.1in 0.3in;
+}
+p {
+   font-size: 12pt;
+   margin: 0.1in 0in 0.1in 0.3in;
+}
+
+
+/******* List Styles *******/
+/******* ^^^^^^^^^^^ *******/
+ul {
+   list-style-type: disc;
+   margin-left: 0.5in;
+}
+
+
+/******* Image Styles *******/
+/******* ^^^^^^^^^^^^ *******/
+article img {
+   border: 2px solid rgb(191, 191, 191);
+   display: block;
+   margin: 0.25in auto;
+   width: 65%;
+}
+
+
+/******* Hypertext Styles *******/
+/******* ^^^^^^^^^^^^^^^^ *******/
+a { 
+   color: black; 
+   text-decoration: none; 
+} 
+a::after {   /* using a pseudo element to add styling AFTER the anchor tags */
+   content: “ (“ attr(href) ”) ”; /* pulls the href value from the attr. Adds spaces for proper formatting. */
+   font-weight: bold; 
+   word-wrap: break-word; /* Makes sure the web address stays on the same line and does not wrap. */
+}
+
+/******* Page Break Styles *******/
+/******* ^^^^^^^^^^^^^^^^^ *******/
+article:nth-of-type(n+2) {  /* targets every second article. */
+   page-break-before: always; /* always breaks page before second article. Each page will have 2 articles after printing. */
+}
+img, ol, ul {
+   page-break-inside: avoid; /* makes sure to not add page break for these elements. This will keep the lists together and add breaks after the lists, if necessary, so the printed page will display them together and not broken up.*/
+}
+p {
+   orphans: 3; /* orphans are framents of text left behind at the bottom of a page. this ensures 3 are alloted. */
+   widows: 3; /* widows are framents of text left behind at the top of a page. */
+}
